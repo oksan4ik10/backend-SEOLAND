@@ -8,9 +8,7 @@ const Role = require("../models/Role");
 
 module.exports.login = async (req, res) => {
   try {
-    console.log(req.body.login);
     const candidate = await Worker.findOne({ login: req.body.login });
-    console.log(candidate);
     if (candidate) {
       //   const passwordRes = bcrypt.compareSync(
       //     req.body.password,
