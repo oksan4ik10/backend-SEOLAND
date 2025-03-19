@@ -54,6 +54,7 @@ module.exports.getAll = async (req, res) => {
 };
 module.exports.create = async (req, res) => {
   const { name, salary, login, password, idRole } = req.body;
+
   const candidate = await Worker.findOne({ login: login });
   if (candidate) {
     res.status(409).json({
