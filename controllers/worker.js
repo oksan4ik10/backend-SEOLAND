@@ -128,7 +128,7 @@ module.exports.getById = async (req, res) => {
 module.exports.getBusyFree = async (req, res) => {
   try {
     const workers = await Worker.find({
-      idRole: "65ca2f82217019cc9ecb2455",
+      idRole: "67ab2aa301aad79d986f8c36",
       busy: false,
     });
     if (!workers.length === 0) {
