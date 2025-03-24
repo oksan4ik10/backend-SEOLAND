@@ -95,7 +95,7 @@ module.exports.create = async (req, res) => {
 module.exports.delete = async (req, res) => {
   const task = await Task.findOne({ _id: req.params.id });
   const worker = await Worker.findOne({ _id: task.IDworker });
-  worker.busy = true;
+  worker.busy = false;
   try {
     await Task.deleteOne({ _id: req.params.id });
     await Tracking.deleteOne({ IDtask: req.params.id });
