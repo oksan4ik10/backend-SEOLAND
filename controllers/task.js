@@ -40,6 +40,23 @@ module.exports.getAll = async (req, res) => {
   }));
   res.status(200).json(data);
 };
+module.exports.getTaskUser = async (req, res) => {
+  try {
+    const task = await Task.findOne({
+      IDworker: req.params.id,
+      status: { $in: ["Новый", "В процессе"] },
+    });
+    if (!task) {
+      res.status(404).json({ message: "Задача не найдена" });
+      return;
+    }
+    const worker = await Worker.findOne({ _id: task.IDworker });
+    const project = await Project.findOne({ _id: task.IDproject });
+    res.status(200).json({ ...task["_doc"], worker: worker, project: project });
+  } catch (e) {
+    errorHandler(res, e);
+  }
+};
 module.exports.create = async (req, res) => {
   const {
     name,
