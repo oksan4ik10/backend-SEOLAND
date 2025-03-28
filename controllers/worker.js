@@ -101,7 +101,7 @@ module.exports.update = async (req, res) => {
   if (salary) worker.salary = salary;
   if (password) {
     const salt = bcrypt.genSaltSync(10);
-    worker.password = bcrypt.hashSync(password, salt);
+    worker.password = password;
   }
   if (idRole) worker.idRole = idRole;
   if (busy !== undefined) worker.busy = busy;
