@@ -66,7 +66,7 @@ module.exports.create = async (req, res) => {
   const salt = bcrypt.genSaltSync(10);
   const worker = new Worker({
     login: login,
-    password: bcrypt.hashSync(password, salt),
+    password: password,
     name: name,
     salary: salary ? salary : null,
     idRole: idRole,
