@@ -16,7 +16,7 @@ module.exports.plan = async (req, res) => {
     const project = await Project.findOne({ _id: req.params.IDproject });
 
     const data = [];
-    const year = new Date().getFullYear();
+    const year = 2025;
 
     const monthStart = new Date(project.date_start).getMonth();
     const monthProjectEnd = new Date(project.date_end).getMonth();
